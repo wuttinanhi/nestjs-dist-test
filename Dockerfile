@@ -12,6 +12,7 @@ FROM node:lts-alpine as production
 ENV NODE_ENV=production
 EXPOSE 3000
 COPY --from=build /usr/src/app /app
+RUN rm -rf /app/node_modules
 WORKDIR /app/dist
 USER node
 CMD ["node", "main.js"]
